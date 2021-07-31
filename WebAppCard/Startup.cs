@@ -18,8 +18,10 @@ namespace WebAppCard
         {
 
 
-            services.AddControllersWithViews();
-                
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+
+            services.AddRazorPages();    
 
             //services.AddRazorPages();
         }
@@ -36,11 +38,11 @@ namespace WebAppCard
             {
                 app.UseDeveloperExceptionPage();
             }
-            //else
-            //{
-            //    // Add Error Page
-            //    app.UseExceptionHandler("/error");
-            //}
+            else
+            {
+                // Add Error Page
+                app.UseExceptionHandler("/Error");
+            }
             app.UseStaticFiles();
 
 
@@ -48,6 +50,7 @@ namespace WebAppCard
 
             app.UseEndpoints(cfg =>
             {
+                cfg.MapRazorPages();
                 cfg.MapControllerRoute("Default",
                        "/{controller}/{action}/{id?}",
                        new { controller = "App", action = "Index" });

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAppCard.Models;
 
 namespace WebAppCard.Controllers
 {
@@ -24,10 +25,20 @@ namespace WebAppCard.Controllers
         [HttpGet("contact")]
         public IActionResult Contact()
         {
-            ViewBag.Title = "Contact";
+            //ViewBag.Title = "Contact";
+
+            //throw new InvalidProgramException("Bad things");
 
             return View();
         }
+
+        [HttpPost("contact")]
+        public IActionResult Contact(ContactView model)
+        {
+
+            //ViewBag.Title = "Contact Us";
+            return View();
+        } 
     }
 
     
