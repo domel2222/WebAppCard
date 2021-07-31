@@ -60,19 +60,21 @@ ul.products-props {
 
     #login-block .popup-form {
         display: none;
-        background-color: orange;
+        background-color: blue;
         /*width: 50%;*/
         border: solid 1px black;
         padding: 2px;
         font-size: 10px;
     }
 
-    menu> li {
+/*    menu > ul > li {
         display: inline;
-    }
-    menu li::after{
+        color: red;
+        text-decoration: none;
+    }*/
+/*    menu li::after{
         content:" |";
-    }
-    menu li:last-of-type::after{
+    }*/
+/*    menu li:last-of-type::after{
         content: "";
-    }
+    }*/
