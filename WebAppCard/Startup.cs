@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppCard.Controllers.Services;
 
 namespace WebAppCard
 {
@@ -17,13 +18,16 @@ namespace WebAppCard
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
 
-            services.AddRazorPages();    
+            services.AddRazorPages();
 
-            //services.AddRazorPages();
+
+
+            services.AddTransient<IMailService, MailService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
