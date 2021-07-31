@@ -14,5 +14,20 @@ namespace WebAppCard.Controllers
             //throw new InvalidProgramException("Bad things");
             return View();
         }
+
+        public IActionResult About()
+        {
+            ViewBag.Title = "About Us";
+
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            ViewBag.Title = "Contact";
+
+            return View();
+        }
     }
+
+    
 }
