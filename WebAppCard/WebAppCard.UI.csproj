@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebAppCard.Data\WebAppCard.Data.csproj" />
+  </ItemGroup>
+
 </Project>

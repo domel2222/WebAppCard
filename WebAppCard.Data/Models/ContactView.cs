@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebAppCard.Models
+namespace WebAppCard.Data.Models
 {
     public class ContactView
     {

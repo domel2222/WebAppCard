@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebAppCard.Controllers.Services;
-using WebAppCard.Models;
+using WebAppCard.Data.Models;
+
 
 namespace WebAppCard.Controllers
 {
