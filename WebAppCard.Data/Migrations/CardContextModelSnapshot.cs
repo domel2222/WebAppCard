@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebAppCard.Data.Models.DataAccess;
+using WebAppCard.Data.DataAccess;
 
 namespace WebAppCard.Data.Migrations
 {

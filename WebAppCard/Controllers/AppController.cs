@@ -4,19 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebAppCard.Controllers.Services;
+using WebAppCard.Services;
 using WebAppCard.Data.Models;
-
+using WebAppCard.Data.DataAccess;
 
 namespace WebAppCard.Controllers
 {
     public class AppController : Controller
     {
         private readonly IMailService _mailService;
+        private readonly CardContext _cardContext;
 
-        public AppController(IMailService mailService)
+        public AppController(IMailService mailService,
+                               CardContext cardContext)
         {
             this._mailService = mailService;
+            this._cardContext = cardContext;
         }
         public IActionResult Index()
         {
@@ -34,7 +37,7 @@ namespace WebAppCard.Controllers
         public IActionResult Contact()
         {
             //ViewBag.Title = "Contact";
-            
+
             //throw new InvalidProgramException("Bad things");
 
             return View();
@@ -56,8 +59,14 @@ namespace WebAppCard.Controllers
                 //show the errors
             }
             return View();
-        } 
-    }
+        }
+        public IActionResult Shop()
+        {
+            var results = _cardContext.PlayerCards.OrderBy(x => x.Category).ToList();
 
-    
+            return View(results);
+        }
+
+
+    }
 }

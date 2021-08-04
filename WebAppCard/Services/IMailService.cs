@@ -1,4 +1,4 @@
-﻿namespace WebAppCard.Controllers.Services
+﻿namespace WebAppCard.Services
 {
     public interface IMailService
     {

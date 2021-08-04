@@ -5,18 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAppCard.Data.Models;
 
-namespace WebAppCard.Data.Models.DataAccess
+namespace WebAppCard.Data.DataAccess
 {
     public class CardContext : DbContext
     {
 
-       public CardContext(DbContextOptions<CardContext> options) : base(options)
+        public CardContext(DbContextOptions<CardContext> options) : base(options)
         {
 
         }
 
-        public DbSet<PlayerCard> PlayerCards { get; set; } 
+        public DbSet<PlayerCard> PlayerCards { get; set; }
         public DbSet<Order> Orders { get; set; }
 
 
@@ -25,5 +26,10 @@ namespace WebAppCard.Data.Models.DataAccess
             base.OnConfiguring(optionsBuilder);
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
+

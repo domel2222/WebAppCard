@@ -1,0 +1,7 @@
+﻿@model IEnumerable<PlayerCard>
+    <h1>Shop</h1>
+    <p>Count: @Model.Count()</p>
+@foreach (var item in Model)
+{
+    <li>@item.PlayerName</li>
+}

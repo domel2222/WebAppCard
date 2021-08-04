@@ -9,8 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAppCard.Controllers.Services;
-using WebAppCard.Data.Models.DataAccess;
+using WebAppCard.Services;
+using WebAppCard.Data.DataAccess;
 
 namespace WebAppCard
 {
