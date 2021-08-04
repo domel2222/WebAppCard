@@ -25,11 +25,30 @@ namespace WebAppCard.Data.Seeder
             _cardContext.Database.EnsureCreated();
             if (!_cardContext.PlayerCards.Any())
             {
+
+                //sample Data 
                 var filePath = Path.Combine("../Extension/card.json");
                 var json = File.ReadAllText(filePath);
                 var cards = JsonConvert.DeserializeObject<IEnumerable<PlayerCard>>(json);
 
+                _cardContext.PlayerCards.AddRange(cards);
 
+
+                var order = new Order()
+                {
+                    OrderDate = DateTime.Today,
+                    OrderNumber = 13547,
+                    Items = new List<OrderItem> {
+                       new OrderItem()
+                       {
+                           PlayerCard = cards.First(),
+                           Quantity = 13,
+                           UnitPrice = cards.First().Price
+                       }
+                    }
+                };
+                
+                _cardContext.SaveChanges();
             }
         }
     }

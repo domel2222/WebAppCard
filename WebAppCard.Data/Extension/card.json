@@ -1,3 +1,132 @@
-{
-	
-}
+[
+	{
+		"Id": 0,
+		"Category": "Legend",
+		"Nationality": "Netherlands",
+		"CardId": "BERGKAMP",
+		"PlayerName": "Dennis Bergkamp",
+		"Position": "attack - Second Striker",
+		"Price": 250.00,
+		"Height": 1.88,
+		"Age": 52,
+		"ActualClub": "Retaired",
+		"PlayerBirthDate": "1969-05-10T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "Argentina",
+		"CardId": "AGUERO",
+		"PlayerName": "Sergio Aguero",
+		"Position": "attack - Centre-Forward",
+		"Price": 19.80,
+		"Height": 1.88,
+		"Age": 33,
+		"ActualClub": "FC Barcelona",
+		"PlayerBirthDate": "1988-06-2T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "Poland",
+		"CardId": "LEWANDOWSKI",
+		"PlayerName": "Rombert Lewandowski",
+		"Position": "attack - Centre-Forward",
+		"Price": 66.00,
+		"Height": 1.85,
+		"Age": 32,
+		"ActualClub": "Bayern Munich",
+		"PlayerBirthDate": "1988-07-21T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Legend",
+		"Nationality": "Netherlands",
+		"CardId": "OVERMARS",
+		"PlayerName": "Marc Overmars",
+		"Position": "attack - Left Winger",
+		"Price": 166.00,
+		"Height": 1.74,
+		"Age": 48,
+		"ActualClub": "Retaired",
+		"PlayerBirthDate": "1973-03-29T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "Argentina",
+		"CardId": "PASTORE",
+		"PlayerName": "Javier Matías Pastore",
+		"Position": "midfield - Attacking Midfield",
+		"Price": 144.00,
+		"Height": 1.87,
+		"Age": 32,
+		"ActualClub": "AS Roma",
+		"PlayerBirthDate": "1989-06-20T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "Brazil",
+		"CardId": "PERSES",
+		"PlayerName": "Bruno da Silva Peres",
+		"Position": "defender - Right-Back ",
+		"Price": 2.75,
+		"Height": 1.78,
+		"Age": 31,
+		"ActualClub": "Trabzonspor",
+		"PlayerBirthDate": "1990-03-01T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "England",
+		"CardId": "ROWE",
+		"PlayerName": "Emile Smith Rowe",
+		"Position": "midfield - Attacking Midfield",
+		"Price": 19.80,
+		"Height": 1.82,
+		"Age": 21,
+		"ActualClub": "Arsenal FC",
+		"PlayerBirthDate": "2000-06-28T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "England",
+		"CardId": "SAKA",
+		"PlayerName": "Bukayo Saka",
+		"Position": "midfield - Attacking Midfield",
+		"Price": 71.50,
+		"Height": 1.78,
+		"Age": 19,
+		"ActualClub": "Arsenal FC",
+		"PlayerBirthDate": "2001-09-05T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "Czech Republic",
+		"CardId": "SCHICK",
+		"PlayerName": "Patrik Schick",
+		"Position": "attack - Centre-Forward",
+		"Price": 30.80,
+		"Height": 1.91,
+		"Age": 25,
+		"ActualClub": "Bayer 04 Leverkusen",
+		"PlayerBirthDate": "1996-01-24T00:00:00"
+	},
+	{
+		"Id": 0,
+		"Category": "Actual",
+		"Nationality": "Scotland",
+		"CardId": "TIERNEY",
+		"PlayerName": "Kieran Tierney",
+		"Position": "defender - Left-Back",
+		"Price": 35.20,
+		"Height": 1.80,
+		"Age": 24,
+		"ActualClub": "Arsenal FC",
+		"PlayerBirthDate": "1997-06-05T00:00:00"
+	}
+]

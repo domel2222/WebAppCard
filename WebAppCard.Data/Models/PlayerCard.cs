@@ -14,7 +14,7 @@ namespace WebAppCard.Data.Models
         public string CardId { get; set; }
         public string PlayerName { get; set; }
         public string Position { get; set; }
-        public decimal Prize { get; set; }
+        public decimal Price { get; set; }
         public decimal Height { get; set; }
         public int Age { get; set; }
         public string ActualClub {get; set;} 
