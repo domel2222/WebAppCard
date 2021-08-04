@@ -1,5 +1,6 @@
-﻿body {
+﻿/*body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: orange;
 }
 
 input[type=submit] {
@@ -61,20 +62,25 @@ ul.products-props {
     #login-block .popup-form {
         display: none;
         background-color: orangered;
-        /*width: 50%;*/
+        width: 50%;
         border: solid 1px black;
         padding: 2px;
         font-size: 10px;
-    }
+    }*/
+.magicSize {
+    background-color: lightsteelblue ;
+    width: 18% ;
+    height: 18% ;
+}
 
-/*    menu > ul > li {
+    menu > ul > li {
         display: inline;
         color: red;
         text-decoration: none;
-    }*/
-/*    menu li::after{
+    }
+    menu li::after{
         content:" |";
-    }*/
-/*    menu li:last-of-type::after{
+    }
+    menu li:last-of-type::after{
         content: "";
-    }*/
+    }

@@ -2221,6 +2221,14 @@ progress {
     transition: none;
   }
 }
+.magizSize {
+    background-color: red !important;
+    width: 40px;
+    border-radius: 50%;
+    /*border: 20px solid #ced4da;*/
+    height: 40px;
+}
+
 .form-control:hover:not(:disabled):not(:-moz-read-only)::file-selector-button {
   background-color: #dde0e3;
 }
