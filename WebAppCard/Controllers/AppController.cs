@@ -7,23 +7,26 @@ using System.Threading.Tasks;
 using WebAppCard.Services;
 using WebAppCard.Data.Models;
 using WebAppCard.Data.DataAccess;
+using WebAppCard.Data.Repository;
 
 namespace WebAppCard.Controllers
 {
     public class AppController : Controller
     {
         private readonly IMailService _mailService;
-        private readonly CardContext _cardContext;
+        //private readonly ICardRepository cardRepository;
+        private readonly ICardRepository _cardRepository;
 
         public AppController(IMailService mailService,
-                               CardContext cardContext)
+                               ICardRepository cardRepository)
         {
             this._mailService = mailService;
-            this._cardContext = cardContext;
+            this._cardRepository = cardRepository;
         }
         public IActionResult Index()
         {
             //throw new InvalidProgramException("Bad things");
+            //var result = _cardRepository.PlayerCards.ToList();
             return View();
         }
 
@@ -62,7 +65,7 @@ namespace WebAppCard.Controllers
         }
         public IActionResult Shop()
         {
-            var results = _cardContext.PlayerCards.OrderBy(x => x.Category).ToList();
+            var results = _cardRepository.GetAllProduct();
 
             return View(results);
         }

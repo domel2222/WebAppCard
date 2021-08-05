@@ -27,7 +27,7 @@ namespace WebAppCard.Data.Seeder
             {
 
                 //sample Data 
-                var filePath = Path.Combine("../Extension/card.json");
+                var filePath = Path.Combine("../WebAppCard.Data/Extension/card.json"); 
                 var json = File.ReadAllText(filePath);
                 var cards = JsonConvert.DeserializeObject<IEnumerable<PlayerCard>>(json);
 
@@ -47,7 +47,8 @@ namespace WebAppCard.Data.Seeder
                        }
                     }
                 };
-                
+
+                _cardContext.Orders.Add(order);
                 _cardContext.SaveChanges();
             }
         }

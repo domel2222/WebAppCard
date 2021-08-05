@@ -1,7 +1,22 @@
 ﻿@model IEnumerable<PlayerCard>
-    <h1>Shop</h1>
-    <p>Count: @Model.Count()</p>
-@foreach (var item in Model)
-{
-    <li>@item.PlayerName</li>
-}
+<h1>Shop</h1>
+<p>Count: @Model.Count()</p>
+
+<div class="">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-2">
+                <img src="~/img/BERGKAMP.png" class="magicSize" />
+                <h3>@item.PlayerName</h3>
+                <ul class="products-props">
+                    <li>Price: $250.99 M</li>
+                    <li>Artist: Bergkamp</li>
+                    <li>Title: </li>
+                    <li>Description: Self-Portrait</li>
+                </ul>
+                <button id="buyButton" class="bnt btn-success">Buy</button>
+            </div>
+        }
+    </div>
+</div>

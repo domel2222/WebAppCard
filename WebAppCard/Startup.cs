@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppCard.Services;
 using WebAppCard.Data.DataAccess;
+using WebAppCard.Data.Seeder;
+using WebAppCard.Data.Repository;
 
 namespace WebAppCard
 {
@@ -32,7 +34,9 @@ namespace WebAppCard
                 option.UseSqlServer(Configuration["ConnectionStrings:CardContext"]);
 
             });
-
+            services.AddScoped<CardSedder>();
+            services.AddScoped<ICardRepository, CardRepository>();
+            
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
