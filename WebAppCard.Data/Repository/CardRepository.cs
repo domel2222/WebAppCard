@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,31 @@ namespace WebAppCard.Data.Repository
     public class CardRepository : ICardRepository
     {
         private readonly CardContext _cardContext;
+        private readonly ILogger<CardRepository> _logger;
 
-        public CardRepository(CardContext cardContext)
+        public CardRepository(CardContext cardContext,
+                               ILogger<CardRepository> logger)
         {
             this._cardContext = cardContext;
+            this._logger = logger;
         }
 
 
         public IEnumerable<PlayerCard> GetAllProduct()
         {
-            return _cardContext.PlayerCards
+            try
+            {  
+                return _cardContext.PlayerCards
                                 .OrderBy(x => x.PlayerName)
                                 .ToList();
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError("Failed to get all cards");
+                return default;
+            }
+            
         }
 
         public IEnumerable<PlayerCard> GetPlayerCardsByCategory(string category)
