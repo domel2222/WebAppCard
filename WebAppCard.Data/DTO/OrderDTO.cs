@@ -13,7 +13,7 @@ namespace WebAppCard.Data.DTO
         public DateTime OrderDate { set; get; }
         [Required]
         [MinLength(4)]
-        public int OrderNumber { get; set; }
+        public string OrderNumber { get; set; }
         public ICollection<OrderItemDTO> Items { get; set; }
     }
 }

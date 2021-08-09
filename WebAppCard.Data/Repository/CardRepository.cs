@@ -61,6 +61,14 @@ namespace WebAppCard.Data.Repository
             
         }
 
+        public Order GetOrderById(int id)
+        {
+            var order = _cardContext.Orders
+                            .Where(x => x.Id == id)
+                            .FirstOrDefault();
+            return order;
+        }
+
         public IEnumerable<PlayerCard> GetPlayerCardsByCategory(string category)
         {
             return _cardContext.PlayerCards.Where(x => x.Category.ToLower()

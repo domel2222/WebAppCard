@@ -13,11 +13,21 @@ namespace WebAppCard.Data.Profiles
     {
         public CardProfile()
         {
+            ReadDto();
+        }
+
+
+
+        private void ReadDto()
+        {
             CreateMap<Order, OrderDTO>()
                 .ForMember(o => o.OrderId, oDto => oDto.MapFrom(x => x.Id))
                 .ReverseMap();
 
 
+            // adjut this method
+            CreateMap<OrderItem, OrderItemDTO>()
+                .ReverseMap();
         }
     }
 }

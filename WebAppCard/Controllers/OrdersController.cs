@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebAppCard.Data.DTO;
+using WebAppCard.Data.Models;
 using WebAppCard.Data.Repository;
 
 namespace WebAppCard.UI.Controllers
@@ -47,8 +48,65 @@ namespace WebAppCard.UI.Controllers
 
                 _logger.LogError($"something worong...{ex}");
 
-                return BadRequest($"operation failed");
+                return BadRequest($"operation failed - return all orders");
             }
+        }
+
+
+        [HttpGet("{id:int}")]
+
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                var order = _cardRepository.GetOrderById(id);
+                if (order == null) return NotFound();
+                else  
+                {
+                    var orderDTO = _mapper.Map<OrderDTO>(order);
+
+                    return Ok(orderDTO);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Fatall Erorr AAAHAAA {ex}");
+                return BadRequest($"Failed to return order");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddOrder([FromBody] OrderDTO model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var newOrder = _mapper.Map<Order>(model);
+                    if (newOrder.OrderDate == DateTime.MinValue)
+                    {
+                        newOrder.OrderDate = DateTime.Now;
+                    }
+
+                    _cardRepository.AddEntity(newOrder);
+                    if (_cardRepository.SaveAll())
+                    {
+                        var order = _mapper.Map<OrderDTO>(newOrder);
+                        return Created($"/api/orders/{newOrder.Id}", order);
+                    }
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to save new order: {ex}");
+            }
+
+            return BadRequest("Mission Failed to save new order");
         }
 
     }
