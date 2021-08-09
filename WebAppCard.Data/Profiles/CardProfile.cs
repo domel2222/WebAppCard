@@ -4,11 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAppCard.Data.DTO;
+using WebAppCard.Data.Models;
 
 namespace WebAppCard.Data.Profiles
 {
     public class CardProfile : Profile
     {
-        
+        public CardProfile()
+        {
+            CreateMap<Order, OrderDTO>()
+                .ForMember(o => o.OrderId, oDto => oDto.MapFrom(x => x.Id))
+                .ReverseMap();
+
+
+        }
     }
 }

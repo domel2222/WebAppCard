@@ -15,6 +15,7 @@ using WebAppCard.Data.Seeder;
 using WebAppCard.Data.Repository;
 using WebAppCard.Data.Profiles;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace WebAppCard
 {
@@ -36,7 +37,10 @@ namespace WebAppCard
                 option.UseSqlServer(Configuration["ConnectionStrings:CardContext"]);
 
             });
-            
+
+            services.AddControllers().AddJsonOptions(x =>
+                       x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
 

@@ -29,7 +29,8 @@ namespace WebAppCard.Data.Repository
 
         public IEnumerable<Order> GetAllOrders(bool details)
         {
-           if (details)
+
+            if (details)
             {
                 return _cardContext.Orders
                            .Include(x => x.Items)
