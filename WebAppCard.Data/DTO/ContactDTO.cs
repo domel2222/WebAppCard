@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebAppCard.Data.DTO
 {
-    public class ContactView
+    public class ContactDTO
     {
         [Required]
         [MinLength(5)]

@@ -13,6 +13,8 @@ using WebAppCard.Services;
 using WebAppCard.Data.DataAccess;
 using WebAppCard.Data.Seeder;
 using WebAppCard.Data.Repository;
+using WebAppCard.Data.Profiles;
+using System.Reflection;
 
 namespace WebAppCard
 {
@@ -34,10 +36,7 @@ namespace WebAppCard
                 option.UseSqlServer(Configuration["ConnectionStrings:CardContext"]);
 
             });
-            services.AddScoped<CardSedder>();
-            services.AddScoped<ICardRepository, CardRepository>();
             
-
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
 
@@ -45,6 +44,9 @@ namespace WebAppCard
 
 
 
+            services.AddAutoMapper(typeof(CardProfile).GetTypeInfo().Assembly);
+            services.AddScoped<CardSedder>();
+            services.AddScoped<ICardRepository, CardRepository>();
             services.AddTransient<IMailService, MailService>();
 
         }

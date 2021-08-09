@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -38,8 +39,11 @@ namespace WebAppCard.UI.Controllers
 
                 _logger.LogError($"something wrong I can't get products{ex}");
 
+                //return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
                 return BadRequest("failed");
             }
         }
+
+
     }
 }

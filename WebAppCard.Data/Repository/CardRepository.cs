@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,26 @@ namespace WebAppCard.Data.Repository
             this._logger = logger;
         }
 
+        public void AddEntity(object entity)
+        {
+            _cardContext.Add(entity);
+        }
+
+        public IEnumerable<Order> GetAllOrders(bool details)
+        {
+           if (details)
+            {
+                return _cardContext.Orders
+                           .Include(x => x.Items)
+                           .ThenInclude(c => c.PlayerCard)
+                           .ToList();
+            }
+            else
+            {
+                return _cardContext.Orders
+                                    .ToList();
+            }
+        }
 
         public IEnumerable<PlayerCard> GetAllProduct()
         {
@@ -33,7 +54,7 @@ namespace WebAppCard.Data.Repository
             catch (Exception ex)
             {
 
-                _logger.LogError("Failed to get all cards");
+                _logger.LogError($"Failed to get all cards {ex}");
                 return default;
             }
             

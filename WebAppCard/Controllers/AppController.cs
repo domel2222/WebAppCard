@@ -47,7 +47,7 @@ namespace WebAppCard.Controllers
         }
 
         [HttpPost("contact")]
-        public IActionResult Contact(ContactView model)
+        public IActionResult Contact(ContactDTO model)
         {
             if (ModelState.IsValid)
             {
