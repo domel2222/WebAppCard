@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebAppCard.Services;
-using WebAppCard.Data.Models;
+using WebAppCard.Data.DTO;
 using WebAppCard.Data.DataAccess;
 using WebAppCard.Data.Repository;
 

@@ -45,7 +45,6 @@ namespace WebAppCard.Data.Repository
                                             == category.ToLower().Trim().Replace(" ", string.Empty))
                                             .ToList();
         }
-
         public bool SaveAll()
         {
             return _cardContext.SaveChanges() > 0;

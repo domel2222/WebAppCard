@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebAppCard.Data.Models
+namespace WebAppCard.Data.DTO
 {
     public class ContactView
     {
