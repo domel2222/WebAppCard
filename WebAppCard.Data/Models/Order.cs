@@ -13,5 +13,6 @@ namespace WebAppCard.Data.Models
         // change to int , new migration
         public int OrderNumber { get; set; }  
         public ICollection<OrderItem> Items { get; set; }
+        public StoreUser User { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using WebAppCard.Data.Models;
 
 namespace WebAppCard.Data.DataAccess
 {
-    public class CardContext : DbContext
+    public class CardContext : IdentityDbContext<StoreUser>
     {
 
         public CardContext(DbContextOptions<CardContext> options) : base(options)
@@ -29,7 +30,7 @@ namespace WebAppCard.Data.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
             //modelBuilder
             //    .Entity<Order>()
             //    .Property(e => e.OrderNumber)
