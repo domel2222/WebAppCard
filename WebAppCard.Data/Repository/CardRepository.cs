@@ -81,6 +81,8 @@ namespace WebAppCard.Data.Repository
         public Order GetOrderById(int id)
         {
             var order = _cardContext.Orders
+                            .Include(i => i.Items)
+                            .ThenInclude(c => c.PlayerCard)
                             .Where(x => x.Id == id)
                             .FirstOrDefault();
             return order;

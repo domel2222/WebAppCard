@@ -8,6 +8,7 @@ using WebAppCard.Services;
 using WebAppCard.Data.DTO;
 using WebAppCard.Data.DataAccess;
 using WebAppCard.Data.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppCard.Controllers
 {
@@ -63,6 +64,7 @@ namespace WebAppCard.Controllers
             }
             return View();
         }
+        [Authorize]
         public IActionResult Shop()
         {
             var results = _cardRepository.GetAllProduct();

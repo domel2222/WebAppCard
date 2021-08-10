@@ -35,7 +35,7 @@ namespace WebAppCard.UI.Controllers
             var order = _cardRepository.GetOrderById(orderId);
             if (order == null) return NotFound();
 
-            var orderDto = _mapper.Map<OrderItemDTO>(order);
+            var orderDto = _mapper.Map<IEnumerable<OrderItemDTO>>(order.Items);
 
             return Ok(orderDto);
         }
