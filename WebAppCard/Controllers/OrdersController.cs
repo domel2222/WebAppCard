@@ -38,9 +38,9 @@ namespace WebAppCard.UI.Controllers
             {
                 var result = _cardRepository.GetAllOrders(details);
 
-                var mapResult = _mapper.Map<IEnumerable<OrderDTO>>(result);
+                //var mapResult = _mapper.Map<IEnumerable<OrderDTO>>(result);
 
-                return Ok(mapResult);
+                return Ok(result);
 
             }
             catch (Exception ex)

@@ -10,8 +10,8 @@ using WebAppCard.Data.DataAccess;
 namespace WebAppCard.Data.Migrations
 {
     [DbContext(typeof(CardContext))]
-    [Migration("20210804052628_FirstMig")]
-    partial class FirstMig
+    [Migration("20210810055201_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,8 +31,8 @@ namespace WebAppCard.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderNumber")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -101,7 +101,7 @@ namespace WebAppCard.Data.Migrations
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Prize")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

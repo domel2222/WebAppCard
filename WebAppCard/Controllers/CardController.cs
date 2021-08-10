@@ -32,6 +32,7 @@ namespace WebAppCard.UI.Controllers
             {
                 var cards = _cardRepository.GetAllProduct();
 
+                //var orders = _cardRepository.GetAllOrders();
                 return Ok(cards);
             }
             catch (Exception ex)

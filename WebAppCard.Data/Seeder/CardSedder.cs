@@ -37,7 +37,7 @@ namespace WebAppCard.Data.Seeder
                 var order = new Order()
                 {
                     OrderDate = DateTime.Today,
-                    OrderNumber = "13547",
+                    OrderNumber = 13547,
                     Items = new List<OrderItem> {
                        new OrderItem()
                        {

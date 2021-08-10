@@ -12,8 +12,9 @@ namespace WebAppCard.Data.DTO
         public int OrderId { get; set; }
         public DateTime OrderDate { set; get; }
         [Required]
-        [MinLength(4)]
-        public string OrderNumber { get; set; }
+        //[MinLength(4)]
+        // change to int , new migration
+        public int OrderNumber { get; set; }
         public ICollection<OrderItemDTO> Items { get; set; }
     }
 }

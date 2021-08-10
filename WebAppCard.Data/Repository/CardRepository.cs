@@ -60,6 +60,23 @@ namespace WebAppCard.Data.Repository
             }
             
         }
+        public IEnumerable<Order> GetAllOrders()
+        {
+            try
+            {
+                return _cardContext.Orders
+                                .OrderBy(x => x.OrderDate)
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Failed to get all cards {ex}");
+                return default;
+            }
+
+        }
+        
 
         public Order GetOrderById(int id)
         {

@@ -10,7 +10,8 @@ namespace WebAppCard.Data.Models
     {
         public int Id { get; set; }
         public DateTime OrderDate { set; get; }
-        public string OrderNumber { get; set; }
+        // change to int , new migration
+        public int OrderNumber { get; set; }  
         public ICollection<OrderItem> Items { get; set; }
     }
 }

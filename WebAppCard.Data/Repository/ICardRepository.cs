@@ -9,6 +9,7 @@ namespace WebAppCard.Data.Repository
         IEnumerable<PlayerCard> GetPlayerCardsByCategory(string category);
         Order GetOrderById(int id);
         IEnumerable<Order> GetAllOrders(bool details);
+        IEnumerable<Order> GetAllOrders();
 
         void AddEntity(object entity);
         bool SaveAll();

@@ -26,10 +26,18 @@ namespace WebAppCard.Data.DataAccess
             base.OnConfiguring(optionsBuilder);
 
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder
+            //    .Entity<Order>()
+            //    .Property(e => e.OrderNumber)
+            //    .HasConversion<string>();
+
         }
     }
 }
+
+
 
