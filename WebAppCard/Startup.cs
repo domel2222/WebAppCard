@@ -41,13 +41,13 @@ namespace WebAppCard
             });
 
 
-            services.AddIdentity<StoreUser, IdentityRole>
-               (
-                config =>
+            services.AddIdentity<StoreUser, IdentityRole>(option =>
                 {
-                    config.User.RequireUniqueEmail = true;
+                    option.User.RequireUniqueEmail = true;
                 })
                .AddEntityFrameworkStores<CardContext>();
+               //.AddDefaultTokenProviders();
+
 
             services.AddControllers().AddJsonOptions(x =>
                        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
@@ -87,6 +87,8 @@ namespace WebAppCard
 
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(cfg =>
             {

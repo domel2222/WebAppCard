@@ -24,7 +24,6 @@ namespace WebAppCard.Data.Seeder
             this._userManager = userManager;
         }
 
-
         public async Task SeedAsync()
         {
             _cardContext.Database.EnsureCreated();
@@ -37,7 +36,6 @@ namespace WebAppCard.Data.Seeder
                 _cardContext.SaveChanges();
             }
         }
-
         private Order CreateOrder(StoreUser user)
         {
             //sample Data 

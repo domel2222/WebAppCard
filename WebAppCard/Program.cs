@@ -24,21 +24,18 @@ namespace WebAppCard
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
+         Host.CreateDefaultBuilder(args)
         .ConfigureAppConfiguration(AddConfiguration)
         .ConfigureWebHostDefaults(webBuilder =>
         {
             webBuilder.UseStartup<Startup>();
         });
 
-
-
-
         private static void RunSeeding(IHost host)
         {
-            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+            //var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
 
-            using (var scope = scopeFactory.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 //var seeder = host.Services.GetService<CardSedder>();
                 var seeder = scope.ServiceProvider.GetService<CardSedder>();
