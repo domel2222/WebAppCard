@@ -16,6 +16,8 @@ using WebAppCard.Data.Repository;
 using WebAppCard.Data.Profiles;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
+using WebAppCard.Data.Models;
 
 namespace WebAppCard
 {
@@ -37,6 +39,15 @@ namespace WebAppCard
                 option.UseSqlServer(Configuration["ConnectionStrings:CardContext"]);
 
             });
+
+
+            services.AddIdentity<StoreUser, IdentityRole>
+               (
+                config =>
+                {
+                    config.User.RequireUniqueEmail = true;
+                })
+               .AddEntityFrameworkStores<CardContext>();
 
             services.AddControllers().AddJsonOptions(x =>
                        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);

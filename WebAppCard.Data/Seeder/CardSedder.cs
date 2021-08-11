@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebAppCard.Data.DataAccess;
 using WebAppCard.Data.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebAppCard.Data.Seeder
 {
@@ -26,52 +27,32 @@ namespace WebAppCard.Data.Seeder
 
         public async Task SeedAsync()
         {
-
-
             _cardContext.Database.EnsureCreated();
 
-
-            StoreUser user = await _userManager.FindByEmailAsync("domel13@gmail.com");
-
-            if (user == null)
-            {
-                user = new StoreUser
-                {
-                    FirstName = "Marcus",
-                    LstName = "Baaaaa",
-                    Email = "domel13@gmail.com",
-                    UserName = "domel13@gmail.com"
-                };
-
-                var result = await _userManager.CreateAsync(user, "P@assw0rd!");
-
-                if (result != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Could not create new user");
-                }
-
-            }
             if (!_cardContext.PlayerCards.Any())
             {
+                StoreUser user = await CreateUser();
+                var order = CreateOrder(user);
+                _cardContext.Orders.Add(order);
+                _cardContext.SaveChanges();
+            }
+        }
 
-                //sample Data 
-                var filePath = Path.Combine("../WebAppCard.Data/Extension/card.json"); 
-                var json = File.ReadAllText(filePath);
-                var cards = JsonConvert.DeserializeObject<IEnumerable<PlayerCard>>(json);
+        private Order CreateOrder(StoreUser user)
+        {
+            //sample Data 
+            var filePath = Path.Combine("../WebAppCard.Data/Extension/card.json");
+            var json = File.ReadAllText(filePath);
+            var cards = JsonConvert.DeserializeObject<IEnumerable<PlayerCard>>(json);
 
-                _cardContext.PlayerCards.AddRange(cards);
-
-
-                //var order = new Order()
-                var order = _cardContext.Orders.Where(x => x.Id == 1).FirstOrDefault();
-
-                if (order != null)
-                {
-                    //OrderDate = DateTime.Today,
-                    //OrderNumber = 13547,
-                    //Items = new List<OrderItem> 
-                    order.User = user;
-                    order.Items = new List<OrderItem>
+            _cardContext.PlayerCards.AddRange(cards);
+            var order = new Order
+            {
+                OrderDate = DateTime.Today,
+                OrderNumber = 13547,
+                //Items = new List<OrderItem> 
+                User = user,
+                Items = new List<OrderItem>
                     {
                        new OrderItem()
                        {
@@ -79,12 +60,32 @@ namespace WebAppCard.Data.Seeder
                            Quantity = 13,
                            UnitPrice = cards.First().Price
                        }
-                    };
-                };
+                    }
+            };
+            return order;
+        }
 
-                _cardContext.Orders.Add(order);
-                _cardContext.SaveChanges();
+        private async Task<StoreUser> CreateUser()
+        {
+            StoreUser user = await _userManager.FindByEmailAsync("domel13@gmail.com");
+
+            if (user == null)
+            {
+                user = new StoreUser
+                {
+                    FirstName = "Marcus",
+                    LastName = "Baaaaa",
+                    Email = "domel13@gmail.com",
+                    UserName = "domel13@gmail.com"
+                };
+                var result = await _userManager.CreateAsync(user, "P@assw0rd!");
+
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Could not create new user");
+                }
             }
+            return user;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace WebAppCard
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+
                 RunSeeding(host);
                 host.Run();
 
@@ -41,7 +42,7 @@ namespace WebAppCard
             {
                 //var seeder = host.Services.GetService<CardSedder>();
                 var seeder = scope.ServiceProvider.GetService<CardSedder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
         }
 
