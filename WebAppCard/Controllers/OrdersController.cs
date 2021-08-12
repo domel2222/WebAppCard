@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,12 +28,17 @@ namespace WebAppCard.UI.Controllers
         private readonly ICardRepository _cardRepository;
         private readonly ILogger<OrdersController> _logger;
         private readonly IMapper _mapper;
+        private readonly UserManager<StoreUser> _userManager;
 
-        public OrdersController(ICardRepository cardRepository, ILogger<OrdersController> logger, IMapper mapper)
+        public OrdersController(ICardRepository cardRepository, 
+                                ILogger<OrdersController> logger,   
+                                IMapper mapper,
+                                UserManager<StoreUser> userManager)
         {
             this._cardRepository = cardRepository;
             this._logger = logger;
             this._mapper = mapper;
+            this._userManager = userManager;
         }
 
 
@@ -85,8 +91,9 @@ namespace WebAppCard.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOrder([FromBody] OrderDTO model)
+        public async Task<IActionResult> AddOrder([FromBody] OrderDTO model)
         {
+            // add to DB 
             try
             {
                 if (ModelState.IsValid)
@@ -96,6 +103,11 @@ namespace WebAppCard.UI.Controllers
                     {
                         newOrder.OrderDate = DateTime.Now;
                     }
+
+                    //separate class for recall users???
+                    var currentUser = await _userManager.FindByIdAsync(User.Identity.Name);
+
+                    newOrder.User = currentUser;
 
                     _cardRepository.AddEntity(newOrder);
                     if (_cardRepository.SaveAll())
