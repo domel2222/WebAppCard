@@ -7,7 +7,9 @@ namespace WebAppCard.Data.Repository
     {
         IEnumerable<PlayerCard> GetAllProduct();
         IEnumerable<PlayerCard> GetPlayerCardsByCategory(string category);
-        Order GetOrderById(int id);
+        //Order GetOrderById(int id);
+        Order GetOrderByIdForUser(string name, int orderId);
+        IEnumerable<Order> GetAllOrdersByUser(string username, bool details);
         IEnumerable<Order> GetAllOrders(bool details);
         IEnumerable<Order> GetAllOrders();
 

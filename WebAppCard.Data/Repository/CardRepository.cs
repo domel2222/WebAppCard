@@ -70,29 +70,55 @@ namespace WebAppCard.Data.Repository
             }
             catch (Exception ex)
             {
-
                 _logger.LogError($"Failed to get all cards {ex}");
                 return default;
             }
 
         }
-        
-
-        public Order GetOrderById(int id)
-        {
-            var order = _cardContext.Orders
-                            .Include(i => i.Items)
-                            .ThenInclude(c => c.PlayerCard)
-                            .Where(x => x.Id == id)
-                            .FirstOrDefault();
-            return order;
-        }
+        //public Order GetOrderById(int id)
+        //{
+        //    var order = _cardContext.Orders
+        //                    .Include(i => i.Items)
+        //                    .ThenInclude(c => c.PlayerCard)
+        //                    .Where(x => x.Id == id)
+        //                    .FirstOrDefault();
+        //    return order;
+        //}
 
         public IEnumerable<PlayerCard> GetPlayerCardsByCategory(string category)
         {
             return _cardContext.PlayerCards.Where(x => x.Category.ToLower()
                                             == category.ToLower().Trim().Replace(" ", string.Empty))
                                             .ToList();
+        }
+
+        public IEnumerable<Order> GetAllOrdersByUser(string username, bool details)
+        {
+            if (details)
+            {
+                return _cardContext.Orders
+                           .Where(x => x.User.UserName == username)
+                           .Include(x => x.Items)
+                           .ThenInclude(c => c.PlayerCard)
+                           .ToList();
+            }
+            else
+            {
+                return _cardContext.Orders
+                                    .Where(x => x.User.UserName == username)
+                                    .ToList();
+            }
+        }
+
+        public Order GetOrderByIdForUser(string name, int orderId)
+        {
+            var order = _cardContext.Orders
+                .Include(i => i.Items)
+                .ThenInclude(c => c.PlayerCard)
+                .Where(x => x.Id == orderId && x.User.UserName == name)
+                .FirstOrDefault();
+
+            return order;
         }
         public bool SaveAll()
         {

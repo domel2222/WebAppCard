@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,6 +15,7 @@ namespace WebAppCard.UI.Controllers
 
     [ApiController]
     [Route("api/orders/{orderId}/items")]
+    [Authorize(Roles = "Admin, Borys")]
     public class OrderItemsController : ControllerBase
     {
         private readonly ICardRepository _cardRepository;
@@ -32,7 +34,7 @@ namespace WebAppCard.UI.Controllers
         [HttpGet]
         public IActionResult GetOrderItemById(int orderId)
         {
-            var order = _cardRepository.GetOrderById(orderId);
+            var order = _cardRepository.GetOrderByIdForUser(User.Identity.Name, orderId);
             if (order == null) return NotFound();
 
             var orderDto = _mapper.Map<IEnumerable<OrderItemDTO>>(order.Items);
@@ -43,7 +45,7 @@ namespace WebAppCard.UI.Controllers
         [HttpGet("{itemId}")]
         public IActionResult GetOrderItem(int orderId, int itemId)
         {
-            var order = _cardRepository.GetOrderById(orderId);
+            var order = _cardRepository.GetOrderByIdForUser(User.Identity.Name, orderId);
             
             if (order == null) return NotFound();
 

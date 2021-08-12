@@ -20,8 +20,8 @@ namespace WebAppCard.UI.Controllers
     [Route("api/[Controller]")]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     //[Authorize]
-    [Authorize(Roles = "Borys")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Borys")]
+    //[Authorize(Roles = "Admin")]
     public class OrdersController : ControllerBase
     {
         private readonly ICardRepository _cardRepository;
@@ -42,7 +42,11 @@ namespace WebAppCard.UI.Controllers
         {
             try
             {
-                var result = _cardRepository.GetAllOrders(details);
+                var username = User.Identity.Name;
+
+
+                //var result = _cardRepository.GetAllOrders(details);
+                var result = _cardRepository.GetAllOrdersByUser(username, details);
 
                 //var mapResult = _mapper.Map<IEnumerable<OrderDTO>>(result);
 
@@ -58,14 +62,13 @@ namespace WebAppCard.UI.Controllers
             }
         }
 
-
         [HttpGet("{id:int}")]
 
         public IActionResult GetById(int id)
         {
             try
             {
-                var order = _cardRepository.GetOrderById(id);
+                var order = _cardRepository.GetOrderByIdForUser(User.Identity.Name, id);
                 if (order == null) return NotFound();
                 else  
                 {
