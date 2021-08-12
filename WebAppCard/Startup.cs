@@ -19,6 +19,7 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 using WebAppCard.Data.Models;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace WebAppCard
 {
@@ -48,14 +49,22 @@ namespace WebAppCard
                 })
                .AddEntityFrameworkStores<CardContext>();
             //.AddDefaultTokenProviders();
-            services.AddAuthentication()
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = "Bearer";
+                option.DefaultChallengeScheme = "Bearer";
+                option.DefaultScheme = "Bearer";
+            }
+            )
                 .AddCookie()
                 .AddJwtBearer(option =>
                 {
-                    option.TokenValidationParameters = new TokenValidationParameters
+                    option.TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuer = _configuration["MyToken:JwtIssuer"]
-                    }
+                        ValidIssuer = _configuration["MyToken:JwtIssuer"],
+                        ValidAudience = _configuration["MyToken:JwtAudience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["MyToken:JwtKey"]))
+                    };
                 });
 
             services.AddControllers().AddJsonOptions(x =>

@@ -18,7 +18,10 @@ namespace WebAppCard.UI.Controllers
     [ApiController]
     [Produces("application/json")]
     [Route("api/[Controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize]
+    [Authorize(Roles = "Borys")]
+    [Authorize(Roles = "Admin")]
     public class OrdersController : ControllerBase
     {
         private readonly ICardRepository _cardRepository;
