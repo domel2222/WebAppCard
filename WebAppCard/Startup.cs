@@ -18,17 +18,18 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 using WebAppCard.Data.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WebAppCard
 {
     public class Startup
 
     {
-        public IConfiguration Configuration;
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration )
         {
-            this.Configuration = configuration;
+            this._configuration = configuration;
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -36,7 +37,7 @@ namespace WebAppCard
         {
             services.AddDbContext<CardContext>(option =>
             {
-                option.UseSqlServer(Configuration["ConnectionStrings:CardContext"]);
+                option.UseSqlServer(_configuration["ConnectionStrings:CardContext"]);
 
             });
 
@@ -46,8 +47,16 @@ namespace WebAppCard
                     option.User.RequireUniqueEmail = true;
                 })
                .AddEntityFrameworkStores<CardContext>();
-               //.AddDefaultTokenProviders();
-
+            //.AddDefaultTokenProviders();
+            services.AddAuthentication()
+                .AddCookie()
+                .AddJwtBearer(option =>
+                {
+                    option.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = _configuration["MyToken:JwtIssuer"]
+                    }
+                });
 
             services.AddControllers().AddJsonOptions(x =>
                        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
@@ -87,6 +96,7 @@ namespace WebAppCard
 
 
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 

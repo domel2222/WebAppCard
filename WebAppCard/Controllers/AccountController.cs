@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WebAppCard.Data.DTO;
@@ -15,12 +19,18 @@ namespace WebAppCard.UI.Controllers
     {
         private readonly ILogger<AccountController> _logger;
         private readonly SignInManager<StoreUser> _signInManager;
+        private readonly UserManager<StoreUser> _userManager;
+        private readonly IConfiguration _configuration;
 
         public AccountController(ILogger<AccountController> logger,
-                                    SignInManager<StoreUser> signInManager)
+                                    SignInManager<StoreUser> signInManager,
+                                    UserManager<StoreUser> userManager,
+                                       IConfiguration configuration)
         {
             this._logger = logger;
             this._signInManager = signInManager;
+            this._userManager = userManager;
+            this._configuration = configuration;
         }
 
         public IActionResult Login()
@@ -65,6 +75,53 @@ namespace WebAppCard.UI.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "App");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateToken([FromBody] LoginDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var user = await _userManager.FindByNameAsync(model.Username);
+                if (user != null)
+                {
+                    var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
+
+                    if (result.Succeeded)
+                    {
+                        // create token
+
+                        var claims = new[]
+                        {
+                            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                            new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
+                            new Claim(ClaimTypes.Role, "Admin"),
+                        };
+                        var cos = _configuration["MyToken:JwtKey"];
+
+                        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["MyToken:JwtKey"]));
+                        var credential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                        var token = new JwtSecurityToken(
+                            _configuration["MyToken:JwtIssuer"],
+                            _configuration["MyToken:JwtAudience"],
+                            claims,
+                            signingCredentials: credential,
+                            expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["MyToken:JwtExpiresTime"]))
+                            );
+
+                        return Created("", new
+                        {
+                            token = new JwtSecurityTokenHandler().WriteToken(token),
+                            expiration = token.ValidTo
+                        });
+                    }
+                }
+            }
+
+            return BadRequest();
         }
     }
 }
