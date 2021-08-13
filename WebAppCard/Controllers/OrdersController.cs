@@ -20,8 +20,9 @@ namespace WebAppCard.UI.Controllers
     [Produces("application/json")]
     [Route("api/[Controller]")]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    //[Authorize]
-    [Authorize(Roles = "Admin, Borys")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
+    //[Authorize(Roles = "Admin, Borys")]
     //[Authorize(Roles = "Admin")]
     public class OrdersController : ControllerBase
     {
@@ -49,7 +50,6 @@ namespace WebAppCard.UI.Controllers
             try
             {
                 var username = User.Identity.Name;
-
 
                 //var result = _cardRepository.GetAllOrders(details);
                 var result = _cardRepository.GetAllOrdersByUser(username, details);

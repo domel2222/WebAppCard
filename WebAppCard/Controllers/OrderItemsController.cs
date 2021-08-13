@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,7 +16,9 @@ namespace WebAppCard.UI.Controllers
 
     [ApiController]
     [Route("api/orders/{orderId}/items")]
-    [Authorize(Roles = "Admin, Borys")]
+    //[Authorize(Roles = "Admin")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     public class OrderItemsController : ControllerBase
     {
         private readonly ICardRepository _cardRepository;

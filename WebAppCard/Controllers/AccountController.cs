@@ -37,7 +37,7 @@ namespace WebAppCard.UI.Controllers
         {
             if ( this.User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "App");
+                return RedirectToAction("Index","App");
             }
             return View();
         }
@@ -61,7 +61,7 @@ namespace WebAppCard.UI.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Shop", "App");
+                        return RedirectToAction("Index","App");
                     }
                 }
             }
@@ -74,7 +74,7 @@ namespace WebAppCard.UI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "App");
+            return RedirectToAction("Index","App");
         }
 
         [HttpPost]
@@ -111,7 +111,7 @@ namespace WebAppCard.UI.Controllers
                             signingCredentials: credential,
                             expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["MyToken:JwtExpiresTime"]))
                             );
-
+                        //this is a problem , I only return this token . I need to add them into user :)......
                         return Created("", new
                         {
                             token = new JwtSecurityTokenHandler().WriteToken(token),

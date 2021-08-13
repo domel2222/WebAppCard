@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Identity;
 using WebAppCard.Data.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace WebAppCard
 {
@@ -39,7 +40,6 @@ namespace WebAppCard
             services.AddDbContext<CardContext>(option =>
             {
                 option.UseSqlServer(_configuration["ConnectionStrings:CardContext"]);
-
             });
 
 
@@ -49,16 +49,24 @@ namespace WebAppCard
                 })
                .AddEntityFrameworkStores<CardContext>();
             //.AddDefaultTokenProviders();
-            services.AddAuthentication(option =>
-            {
-                option.DefaultAuthenticateScheme = "Bearer";
-                option.DefaultChallengeScheme = "Bearer";
-                option.DefaultScheme = "Bearer";
-            }
-            )
+            //.AddTokenProvider("WebCard", typeof(DataProtectorTokenProvider<StoreUser>));
+
+            services.AddAuthentication( options =>
+                /*JwtBearerDefaults.AuthenticationScheme*/
+                {
+                    //option.DefaultAuthenticateScheme = "Bearer";
+                    //option.DefaultScheme = "Bearer";
+                    //option.DefaultChallengeScheme = "Bearer";
+                    //options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    //options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    //options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                }
+                )
                 .AddCookie()
                 .AddJwtBearer(option =>
                 {
+                    option.RequireHttpsMetadata = false;
+                    option.SaveToken = true;
                     option.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidIssuer = _configuration["MyToken:JwtIssuer"],
@@ -102,7 +110,6 @@ namespace WebAppCard
                 app.UseExceptionHandler("/Error");
             }
             app.UseStaticFiles();
-
 
             app.UseRouting();
 

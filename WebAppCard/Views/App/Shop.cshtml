@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<PlayerCard>
+@section Scripts { 
+    <script src="~/ts/shop.js"></script>
+    <script src="~/ts/main.js"></script>
+}
 <div class="container">
-<h1>Shop</h1>
-<p>Count: @Model.Count()</p>
+    <h1>Shop</h1>
+    <p>Count: @Model.Count()</p>
 
     <div class="row">
         @foreach (var item in Model)
         {
             <div class="col-md-3 mb-2">
-                <div class="border bg-light rounded p-1 " >
-                    <img src="~/img/@(item.CardId).png" class="img-fluid" alt="@item.PlayerName"/>
+                <div class="border bg-light rounded p-1 ">
+                    <img src="~/img/@(item.CardId).png" class="img-fluid" alt="@item.PlayerName" />
                     <h5>@item.PlayerName - @item.Category</h5>
                     <ul>
                         <li>Price: €@(item.Price)m </li>

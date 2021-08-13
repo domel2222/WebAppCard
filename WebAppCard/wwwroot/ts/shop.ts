@@ -4,7 +4,6 @@
 
     }
 
-
     showName() {
         alert(`${this.firstName} ${this.lastName}`)
     }

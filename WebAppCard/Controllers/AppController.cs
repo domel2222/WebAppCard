@@ -64,6 +64,7 @@ namespace WebAppCard.Controllers
             }
             return View();
         }
+        //[Authorize(Roles = "Admin")] // Maybe During create token come up a pretty tricky problem ...
         [Authorize]
         public IActionResult Shop()
         {
