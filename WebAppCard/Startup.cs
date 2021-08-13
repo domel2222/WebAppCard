@@ -56,7 +56,7 @@ namespace WebAppCard
                 option.DefaultScheme = "Bearer";
             }
             )
-                .AddCookie()
+                //.AddCookie()
                 .AddJwtBearer(option =>
                 {
                     option.TokenValidationParameters = new TokenValidationParameters()
