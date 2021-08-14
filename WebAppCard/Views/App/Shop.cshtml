@@ -1,25 +1,37 @@
 ﻿@model IEnumerable<PlayerCard>
-<div class="container">
-<h1>Shop</h1>
-<p>Count: @Model.Count()</p>
+@section Scripts{
 
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3 mb-2">
-                <div class="border bg-light rounded p-1 " >
-                    <img src="~/img/@(item.CardId).png" class="img-fluid" alt="@item.PlayerName"/>
-                    <h5>@item.PlayerName - @item.Category</h5>
-                    <ul>
-                        <li>Price: €@(item.Price)m </li>
-                        <li>Nationality: @item.Nationality</li>
-                        <li>Height: @(item.Height)m</li>
-                        <li>Status: @item.ActualClub</li>
-                        <li>Position: @item.Position</li>
-                    </ul>
-                    <button id="buyButton" class="bnt btn-success">Buy</button>
+    <script src="~/ClientForWebCard/vendor.js"></script>
+    <script src="~/ClientForWebCard/polyfills.js"></script>
+    <script src="~/ClientForWebCard/runtime.js"></script>
+    <script src="~/ClientForWebCard/main.js" asp-append-version="true"></script>
+}
+@section head {
+
+    <link href="~/ClientForWebCard/styles.css" rel="stylesheet" />
+}
+<the-shop></the-shop>
+@*<div class="container">
+    <h1>Shop</h1>
+    <p>Count: @Model.Count()</p>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-2">
+                    <div class="border bg-light rounded p-1 " >
+                        <img src="~/img/@(item.CardId).png" class="img-fluid" alt="@item.PlayerName"/>
+                        <h5>@item.PlayerName - @item.Category</h5>
+                        <ul>
+                            <li>Price: €@(item.Price)m </li>
+                            <li>Nationality: @item.Nationality</li>
+                            <li>Height: @(item.Height)m</li>
+                            <li>Status: @item.ActualClub</li>
+                            <li>Position: @item.Position</li>
+                        </ul>
+                        <button id="buyButton" class="bnt btn-success">Buy</button>
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-</div>
+            }
+        </div>
+    </div>*@

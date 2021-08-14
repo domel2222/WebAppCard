@@ -51,9 +51,9 @@ namespace WebAppCard
             //.AddDefaultTokenProviders();
             services.AddAuthentication(option =>
             {
-                option.DefaultAuthenticateScheme = "Bearer";
-                option.DefaultChallengeScheme = "Bearer";
-                option.DefaultScheme = "Bearer";
+                //option.DefaultAuthenticateScheme = "Bearer";
+                //option.DefaultChallengeScheme = "Bearer";
+                //option.DefaultScheme = "Bearer";
             }
             )
                 //.AddCookie()
