@@ -42,7 +42,6 @@ namespace WebAppCard
 
             });
 
-
             services.AddIdentity<StoreUser, IdentityRole>(option =>
                 {
                     option.User.RequireUniqueEmail = true;
@@ -74,9 +73,6 @@ namespace WebAppCard
                 .AddRazorRuntimeCompilation();
 
             services.AddRazorPages();
-
-
-
             services.AddAutoMapper(typeof(CardProfile).GetTypeInfo().Assembly);
             services.AddScoped<CardSedder>();
             services.AddScoped<ICardRepository, CardRepository>();

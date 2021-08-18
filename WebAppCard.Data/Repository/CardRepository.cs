@@ -30,12 +30,18 @@ namespace WebAppCard.Data.Repository
         public IEnumerable<Order> GetAllOrders(bool details)
         {
 
+            
+
             if (details)
             {
+                
+
                 return _cardContext.Orders
                            .Include(x => x.Items)
                            .ThenInclude(c => c.PlayerCard)
                            .ToList();
+
+                
             }
             else
             {
@@ -47,10 +53,10 @@ namespace WebAppCard.Data.Repository
         public IEnumerable<PlayerCard> GetAllProduct()
         {
             try
-            {  
+            {
                 return _cardContext.PlayerCards
                                 .OrderBy(x => x.PlayerName)
-                                .ToList();
+                                .ToArray();
             }
             catch (Exception ex)
             {

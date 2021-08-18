@@ -20,8 +20,8 @@ namespace WebAppCard.UI.Controllers
     [Produces("application/json")]
     [Route("api/[Controller]")]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    //[Authorize]
-    [Authorize(Roles = "Admin, Borys")]
+    [Authorize]
+    //[Authorize(Roles = "Admin, Borys")]
     //[Authorize(Roles = "Admin")]
     public class OrdersController : ControllerBase
     {
@@ -47,16 +47,16 @@ namespace WebAppCard.UI.Controllers
         public IActionResult GetOrdersWithDetails(bool details = true)
         {
             try
-            {
+                {
                 var username = User.Identity.Name;
 
 
                 //var result = _cardRepository.GetAllOrders(details);
                 var result = _cardRepository.GetAllOrdersByUser(username, details);
 
-                //var mapResult = _mapper.Map<IEnumerable<OrderDTO>>(result);
+                var mapResult = _mapper.Map<IEnumerable<OrderDTO>>(result);
 
-                return Ok(result);
+                return Ok(mapResult);
 
             }
             catch (Exception ex)

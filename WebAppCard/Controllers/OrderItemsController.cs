@@ -15,7 +15,8 @@ namespace WebAppCard.UI.Controllers
 
     [ApiController]
     [Route("api/orders/{orderId}/items")]
-    [Authorize(Roles = "Admin, Borys")]
+    //[Authorize(Roles = "Admin, Borys")]
+    [Authorize]
     public class OrderItemsController : ControllerBase
     {
         private readonly ICardRepository _cardRepository;
