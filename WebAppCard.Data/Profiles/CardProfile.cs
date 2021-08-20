@@ -27,7 +27,8 @@ namespace WebAppCard.Data.Profiles
 
             // adjut this method
             CreateMap<OrderItem, OrderItemDTO>()
-                .ReverseMap();
+                .ReverseMap()
+                .ForMember(x => x.PlayerCard, option => option.Ignore());
         }
     }
 }

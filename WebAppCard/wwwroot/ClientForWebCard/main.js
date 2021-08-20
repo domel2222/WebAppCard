@@ -591,7 +591,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 class Order {
     constructor() {
+        this.minValue = 1;
+        this.maxValue = 1000000;
         this.orderDate = new Date();
+        this.orderNumber = Math.floor(Math.random() * (this.maxValue - this.minValue + 1)) + this.minValue;
         this.items = [];
     }
     get subtotal() {

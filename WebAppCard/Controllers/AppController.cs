@@ -64,7 +64,7 @@ namespace WebAppCard.Controllers
             }
             return View();
         }
-        //[Authorize]
+        [Authorize]
         public IActionResult Shop()
         {
 

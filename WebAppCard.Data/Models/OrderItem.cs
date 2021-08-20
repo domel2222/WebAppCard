@@ -10,6 +10,7 @@ namespace WebAppCard.Data.Models
     {
         public int Id { get; set; }
         public PlayerCard PlayerCard { get; set; }
+        public int PlayerCardId { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public Order Order { get; set; }
