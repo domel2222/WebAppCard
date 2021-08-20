@@ -93,6 +93,7 @@ namespace WebAppCard.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOrder([FromBody] OrderDTO model)
         {
+            Console.WriteLine("dd");
             // add to DB 
             try
             {
@@ -105,7 +106,7 @@ namespace WebAppCard.UI.Controllers
                     }
 
                     //separate class for recall users???
-                    var currentUser = await _userManager.FindByIdAsync(User.Identity.Name);
+                    var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
                     newOrder.User = currentUser;
 

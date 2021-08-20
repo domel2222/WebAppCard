@@ -64,9 +64,11 @@ namespace WebAppCard.Controllers
             }
             return View();
         }
-        [Authorize]
+        //[Authorize]
         public IActionResult Shop()
         {
+
+            var cos = HttpContext.User;
             var results = _cardRepository.GetAllProduct();
 
             return View(results);
