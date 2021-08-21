@@ -1,12 +1,4 @@
-﻿////// index.js
-////$(document).ready(function () {
-////  var x = 0;
-////  var s = "";
-
-////  console.log("Hello Pluralsight!");
-
-
-
+﻿
 
 ////  var theForm = $("#theForm");
 ////  theForm.hide();
@@ -42,14 +34,14 @@
 //        alert("Buying...");
 //    })
 
-//    var listItems = document.getElementsByClassName("product-info");
-//    listItems[0].addEventListener("click", function () {
-//        alert("prodList");
-//    });
+    var listItems = document.getElementsByClassName("product-info");
+    listItems[0].addEventListener("click", function () {
+        alert("prodList");
+    });
 
-//    var popup = $("#login-block .popup-form");
-//    $("#login-block .toggle-item").on("click", function () {
-//        popup.slideToggle(250);
-//    });
+    var popup = $("#login-block .popup-form");
+    $("#login-block .toggle-item").on("click", function () {
+        popup.slideToggle(250);
+    });
 
 //});

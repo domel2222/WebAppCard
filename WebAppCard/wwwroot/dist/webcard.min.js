@@ -1,0 +1,1 @@
+var listItems=document.getElementsByClassName("product-info");listItems[0].addEventListener("click",function(){alert("prodList")});var popup=$("#login-block .popup-form");$("#login-block .toggle-item").on("click",function(){popup.slideToggle(250)});
