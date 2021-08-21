@@ -18,7 +18,7 @@ function minify() {
 function styles() {
     return gulp.src(["wwwroot/js/**/*.js"])
         .pipe(uglify())
-        .pipe(concat("webcard.mincss"))
+        .pipe(concat("webcard.min.css"))
             .pipe(gulp.dest("wwwroot/dist/"))
 }
 
