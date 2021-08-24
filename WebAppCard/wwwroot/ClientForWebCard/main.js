@@ -82,9 +82,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router */ 8649);
 /* harmony import */ var _pages_shopPage_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/shopPage.component */ 4550);
 /* harmony import */ var _pages_checkout_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/checkout.component */ 1117);
-/* harmony import */ var _pages_loginPage_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/loginPage.component */ 589);
-/* harmony import */ var _services_authActivator_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/authActivator.service */ 478);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ 679);
+/* harmony import */ var _pages_loginPage_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/loginPage.component */ 7589);
+/* harmony import */ var _services_authActivator_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/authActivator.service */ 7478);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ 3679);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 7716);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ 9895);
 
@@ -266,7 +266,7 @@ Checkout.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵd
 
 /***/ }),
 
-/***/ 589:
+/***/ 7589:
 /*!**********************************************!*\
   !*** ./src/app/pages/loginPage.component.ts ***!
   \**********************************************/
@@ -281,7 +281,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_store_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/store.service */ 2000);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 9895);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 8583);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 679);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 3679);
 
 
 
@@ -437,9 +437,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 9895);
 /* harmony import */ var _pages_checkout_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/checkout.component */ 1117);
-/* harmony import */ var _pages_loginPage_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/loginPage.component */ 589);
+/* harmony import */ var _pages_loginPage_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/loginPage.component */ 7589);
 /* harmony import */ var _pages_shopPage_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/shopPage.component */ 4550);
-/* harmony import */ var _services_authActivator_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/authActivator.service */ 478);
+/* harmony import */ var _services_authActivator_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/authActivator.service */ 7478);
 
 
 
@@ -459,7 +459,7 @@ const router = _angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterModule.forRoot
 
 /***/ }),
 
-/***/ 478:
+/***/ 7478:
 /*!***************************************************!*\
   !*** ./src/app/services/authActivator.service.ts ***!
   \***************************************************/
