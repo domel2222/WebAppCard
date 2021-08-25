@@ -9,5 +9,6 @@ namespace WebAppCard.Data.DTO
     public class SimpleDTO
     {
         public string Test { get; set; }
+        public string Second { get; set; }
     }
 }
