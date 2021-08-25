@@ -1,0 +1,16 @@
+<div class="row">
+    <div *ngFor="let item of store.cards" class="col-md-4 mb-2">
+        <div class="border bg-light rounded p-1 playercard" >
+            <img src="/img/{{item.cardId}}.png" class="img-fluid playercard__image" alt="{{item.playerName}}"/>
+            <h5>{{item.playerName}} - {{item.category}}</h5> 
+            <ul class="playercard__properties">
+                <li>Price: {{item.price | number : '1.2-2' | currency: 'GBP'}}M</li>
+                <li>Nationality: {{item.nationality}}</li>
+                <li>Height: {{item.height | number : '1.2-2'}}m</li>
+                <li>Status: {{item.actualClub}}</li>
+                <li>Position: {{item.position}}</li>
+            </ul>
+            <button id="buyButton" class="bnt btn-success" (click)="store.addToOrder(item)">Buy</button>
+        </div>
+    </div>
+</div>

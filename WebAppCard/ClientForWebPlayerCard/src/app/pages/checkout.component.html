@@ -1,0 +1,31 @@
+<div class="row">
+    <h3>Confirm Order</h3>
+    <div  *ngIf="errorMessage" class="alert alert-danger" width="100px" >{{errorMessage}}</div>
+    <table class="table table-bordered text-center">
+        <tr   *ngFor="let item of store.order.items">
+            <td><img src="/img/{{item.playerCardCardId}}.png" class="img-thumbnail checkouthumb" alt="{{item.playerCardPlayerName}}"/></td>
+            <td>{{item.playerCardCategory}} {{item.playerCardNationality}}: {{item.playerCardPlayerName}}</td>
+            <td >{{item.quantity}}</td>
+            <td >{{item.unitPrice | currency: "GBP"}}M</td>
+            <td >{{(item.quantity * item.unitPrice) | currency: "GBP"}}M</td>
+        </tr>
+    </table>
+    <div class="col-md-4 col-md-offset-8 text-end">
+        <table class="table table-condensed ">
+            <tr>
+                <td class="text-center">Subtotal</td>
+                <td class="text-end">{{store.order.subtotal | currency: "GBP"}}M</td>
+            </tr>
+            <tr>
+                <td class="text-center">Shipping</td>
+                <td class="text-end"> 0.00 </td>
+            </tr>
+            <tr>
+                <td class="text-center">Total: </td>
+                <td class="text-end">{{store.order.subtotal | currency: "GBP"}}M</td>
+            </tr>
+        </table>
+        <button class="btn btn-success" (click)= "onCheckout()">Complete Purchase</button>
+        <a routerLink="/"  class="btn btn-info">Cancel</a>
+    </div>
+</div>
