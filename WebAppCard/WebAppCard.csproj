@@ -19,10 +19,14 @@
     <ProjectReference Include="..\WebAppCard.Data\WebAppCard.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 	<Target Name="WebCard" BeforeTargets="BeforePublish">
-		<Exec Command="npm install"/>
-		<Exec Command="gulp"/>
-		<Exec Command="npm install" WorkingDirectory=".\\ClientForWebCard"/>
-		<Exec Command="ng build --prod" WorkingDirectory=".\\ClientForWebCard"/>
+		<Exec Command="npm install" />
+		<Exec Command="gulp" />
+		<Exec Command="npm install" WorkingDirectory=".\\ClientForWebCard" />
+		<Exec Command="ng build --prod" WorkingDirectory=".\\ClientForWebCard" />
 	</Target>
 </Project>
