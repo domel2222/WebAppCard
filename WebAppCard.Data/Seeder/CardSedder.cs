@@ -39,8 +39,11 @@ namespace WebAppCard.Data.Seeder
         private Order CreateOrder(StoreUser user)
         {
             //sample Data 
-            var filePath = Path.Combine("../WebAppCard.Data/Extension/card.json");
-            var json = File.ReadAllText(filePath);
+            var curentDir = Directory.GetCurrentDirectory();
+            var jsonFullPath = Path.GetRelativePath(curentDir, "WebAppCard.Data/Extension/card.json");
+
+            //var filePath = Path.Combine("../WebAppCard.Data/Extension/card.json");
+            var json = File.ReadAllText(jsonFullPath);
             var cards = JsonConvert.DeserializeObject<IEnumerable<PlayerCard>>(json);
 
             _cardContext.PlayerCards.AddRange(cards);
